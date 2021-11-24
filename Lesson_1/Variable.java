@@ -15,6 +15,7 @@ public class Variable {
     char symbol = '!';
     char symbolCr = '\n';
     boolean isMine = true;
+
         //Выводим переменные на экран
         System.out.println("Параметры персонального компьютера:" + symbolCr);
         System.out.println("Тип операционной системы: " + '\t' + "Windows 10 Pro. Версия 21H1");
@@ -26,8 +27,7 @@ public class Variable {
         System.out.println("Тип процессора: " + '\t' + '\t' + "Intel Core i7-8550U");
         System.out.println("Частота: " + '\t' + '\t' + '\t' + cpuBaseFrequencyHz + " Гц. (Макс. частота: " + cpuMaxFrequencyHz + " Гц.)");
         System.out.println("Число ядер: " + '\t' + '\t' + '\t' + cpuCores + symbolCr);
-            if (isMine = true) {
-
+            if (isMine) {
                 System.out.println("Это мой ПК" + symbol);
             } else {
                 System.out.println("Это чужой ПК" + symbol);
