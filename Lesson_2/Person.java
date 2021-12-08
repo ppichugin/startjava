@@ -22,7 +22,7 @@ public class Person {
         System.out.println("I'm speaking.");
     }
 
-    public void learningJava() {
+    public void learnJava() {
         System.out.println("I'm learning Java.");
     }
 }
