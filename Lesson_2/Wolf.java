@@ -1,10 +1,11 @@
 public class Wolf {
 
-    private boolean isMale;
+    private boolean male;
     private String name;
     private float weight;
     private int age;
     private String color;
+
     //объявляем методы
     public void move() {
         System.out.println("идет");
@@ -26,12 +27,12 @@ public class Wolf {
         System.out.println("Охотится");
     }
     //назначаем сеттеры и геттеры
-    public boolean getIsMale() {
-        return isMale;
+    public boolean isMale() {
+        return male;
     }
 
-    public void setIsMale(boolean isMale) {
-        this.isMale = isMale;
+    public void setMale(boolean male) {
+        this.male = male;
     }
 
     public String getName() {
