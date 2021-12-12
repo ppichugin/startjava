@@ -1,5 +1,5 @@
 public class Calculator {
-
+ 
     public static void main(String[] args) {
         // определяем переменные для цифр и математической операции (+, -, *, /, ^, %)
         int number1 = 17;
