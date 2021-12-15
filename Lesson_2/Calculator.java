@@ -18,46 +18,40 @@ public class Calculator {
     }
 
     public void calc() {
-        System.out.println("Задание: " + number1 + mathSign + number2);
+        System.out.print("Задание: " + number1 + mathSign + number2);
         switch (mathSign) {
-        case '+':
-            System.out.println("Выполняем сложение");
-            result = number1 + number2;
-            System.out.println(number1 + " + " + number2 + " = " + result);
-            break;
-        case '-':
-            System.out.println("Выполняем вычитание");
-            result = number1 - number2;
-            System.out.println(number1 + " - " + number2 + " = " + result);
-            break;
-        case '*':
-            System.out.println("Выполняем умножение");
-            result = number1 * number2;
-            System.out.println(number1 + " * " + number2 + " = " + result);
-            break;
-        case '/':
-            System.out.println("Выполняем деление");
-            // используем тип double, чтобы сохранить знаки после запятой
-            double resultDivision = (double)number1 / (double)number2;
-            System.out.println(number1 + " / " + number2 + " = " + resultDivision);
-            break;
-        case '^':
-            System.out.println("Выполняем возведение в степень");
-            // используем тип Long так как возведение в степень может иметь большие значения
-            long resultExponentiaton = 1;
-            for (int j = 1; j <= number2; j++) {
-                resultExponentiaton *= number1;
-            }
-            System.out.println(number1 + " ^ " + number2 + " = " + resultExponentiaton);
-            break;
-        case '%':
-            System.out.println("Выполняем деление по модулю");
-            result = number1 % number2;
-            System.out.println(number1 + " % " + number2 + " = " + result);
-            break;
-        default:
-            System.out.println("Математическая операция невозможна. Недопустимый оператор.");
-            break;
+            case '+':
+                result = number1 + number2;
+                System.out.println(" = " + result);
+                break;
+            case '-':
+                result = number1 - number2;
+                System.out.println(" = " + result);
+                break;
+            case '*':
+                result = number1 * number2;
+                System.out.println(" = " + result);
+                break;
+            case '/':
+                // используем тип double, чтобы сохранить знаки после запятой
+                double resultDivision = (double)number1 / (double)number2;
+                System.out.println(" = " + resultDivision);
+                break;
+            case '^':
+                // используем тип Long так как возведение в степень может иметь большие значения
+                long resultExponentiaton = 1;
+                for (int j = 1; j <= number2; j++) {
+                    resultExponentiaton *= number1;
+                }
+                System.out.println(" = " + resultExponentiaton);
+                break;
+            case '%':
+                result = number1 % number2;
+                System.out.println(" = " + result);
+                break;
+            default:
+                System.out.println("\n" + "Математическая операция невозможна. Недопустимый оператор.");
+                break;
         }
     }
 }

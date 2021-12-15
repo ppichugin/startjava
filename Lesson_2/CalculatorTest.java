@@ -4,8 +4,16 @@ public class CalculatorTest {
 
     public static void main(String[] args) {
         Scanner scanInput = new Scanner(System.in);
-        String answer ="yes";
-        while (answer.equals("yes")) {
+        String answer = "yes";
+        outer:
+        while (true) {
+            if (!(answer.equals("yes") | answer.equals("no"))) {
+                System.out.println("Хотите продолжить вычисления? [yes/no]:");
+                answer = scanInput.nextLine();
+                continue outer;
+            } else if (answer.equals("no")) {
+                break;
+            }
             Calculator calc = new Calculator();
             System.out.println("Введите первое число: ");
             calc.setNumber1(scanInput.nextInt());
@@ -15,10 +23,13 @@ public class CalculatorTest {
             calc.setNumber2(scanInput.nextInt());
             scanInput.nextLine();
             calc.calc();
-            do {
+            System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            answer = scanInput.nextLine();
+/*            do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 answer = scanInput.nextLine();
-            } while (!(answer.equals("yes") | answer.equals("no")));
+            } while (!(answer.equals("yes") | answer.equals("no")));*/
         }
+        scanInput.close();
     }
 }
