@@ -7,7 +7,7 @@ public class CalculatorTest {
         Calculator calc = new Calculator();
         String answer = "yes";
         do {
-            if (answer.equals("yes")) {
+            if ("yes".equals(answer)) {
                 System.out.println("Введите первое число: ");
                 calc.setNumber1(scanInput.nextInt());
                 System.out.println("Введите знак математической операции: ");
@@ -15,11 +15,11 @@ public class CalculatorTest {
                 System.out.println("Введите второе число: ");
                 calc.setNumber2(scanInput.nextInt());
                 scanInput.nextLine();
-                calc.calc();
+                calc.calculate();
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
             answer = scanInput.nextLine();
-        } while (!answer.equals("no"));
+        } while (!"no".equals(answer));
         scanInput.close();
     }
 }

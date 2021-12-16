@@ -17,7 +17,7 @@ public class Calculator {
         this.mathSign = mathSign;
     }
 
-    public void calc() {
+    public void calculate() {
         System.out.print("Задание: " + number1 + mathSign + number2);
         switch (mathSign) {
             case '+':
