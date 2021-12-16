@@ -1,25 +1,10 @@
 public class JaegerTest {
 
     public static void main(String[] args) {
-        Jaeger jaegerOne = new Jaeger();
-        Jaeger jaegerTwo = new Jaeger();
-        jaegerOne.setModelName("Crimson Typhoon");
-        jaegerOne.setMark("Mark-4");
-        jaegerOne.setOrigin("China");
-        jaegerOne.setRangers(3);
-        jaegerOne.setHeight(76.2f);
-        jaegerOne.setWeight(1.722f);
-        jaegerOne.setStrength(8);
-        jaegerOne.setArmor(6);
-        jaegerTwo.setModelName("Gipsy Danger");
-        jaegerTwo.setMark("Mark-3");
-        jaegerTwo.setOrigin("USA");
-        jaegerTwo.setRangers(2);
-        jaegerTwo.setHeight(79.25f);
-        jaegerTwo.setWeight(1.980f);
-        jaegerTwo.setStrength(8);
-        jaegerTwo.setArmor(6);
-        System.out.println("We have two Jagers:");
+        // синтаксис конструктора: Jaeger(String modelName, String mark, String origin, int rangers, float height, float weight, int strength, int armor)
+        Jaeger jaegerOne = new Jaeger("Crimson Typhoon", "Mark-4", "China", 3, 76.2f, 1.722f, 8, 6);
+        Jaeger jaegerTwo = new Jaeger("Gipsy Danger", "Mark-3", "USA", 2, 79.25f, 1.980f, 8, 6);
+        System.out.println("We have two Jaegers:");
         System.out.println("Model name:" + "\t" + jaegerOne.getModelName() + "\t\t" + jaegerTwo.getModelName());
         System.out.println("Mark version:" + "\t" + jaegerOne.getMark() + "\t\t\t" + jaegerTwo.getMark());
         System.out.println("Origin:" + "\t\t" + jaegerOne.getOrigin() + "\t\t\t" + jaegerTwo.getOrigin());
