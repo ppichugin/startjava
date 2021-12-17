@@ -3,7 +3,6 @@ public class Calculator {
     private int number1;
     private int number2;
     private char mathSign;
-    private int result;
 
     public void setNumber1(int number1) {
         this.number1 = number1;
@@ -21,21 +20,17 @@ public class Calculator {
         System.out.print("Задание: " + number1 + mathSign + number2);
         switch (mathSign) {
             case '+':
-                result = number1 + number2;
-                System.out.println(" = " + result);
+                System.out.println(" = " + (number1 + number2));
                 break;
             case '-':
-                result = number1 - number2;
-                System.out.println(" = " + result);
+                System.out.println(" = " + (number1 - number2));
                 break;
             case '*':
-                result = number1 * number2;
-                System.out.println(" = " + result);
+                System.out.println(" = " + (number1 * number2));
                 break;
             case '/':
                 // используем тип double, чтобы сохранить знаки после запятой
-                double resultDivision = (double)number1 / (double)number2;
-                System.out.println(" = " + resultDivision);
+                System.out.println(" = " + ((double) number1 / (double) number2));
                 break;
             case '^':
                 // используем тип Long так как возведение в степень может иметь большие значения
@@ -46,8 +41,7 @@ public class Calculator {
                 System.out.println(" = " + resultExponentiaton);
                 break;
             case '%':
-                result = number1 % number2;
-                System.out.println(" = " + result);
+                System.out.println(" = " + (number1 % number2));
                 break;
             default:
                 System.out.println("\n" + "Математическая операция невозможна. Недопустимый оператор.");
