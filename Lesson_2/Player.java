@@ -41,20 +41,4 @@ public class Player {
         this.number = 0;
     }
 
-    // public boolean checkNumber(int number, int secretNumber) {
-    //     this.number = number;
-    //     if (number < secretNumber) {
-    //         System.out.println("Введенное число: " + number + " меньше загаданного.");
-    //         setMinRange(number);
-    //         System.out.println("_Подсказка для игрока " + name + " : " + corrections() + "\n");
-    //     } else if (number > secretNumber) {
-    //         System.out.println("Введенное число: " + number + " больше загаданного.");
-    //         setMaxRange(number);
-    //         System.out.println("_Подсказка для игрока " + name + " : " + corrections() + "\n");
-    //     } else if (number == secretNumber) {
-    //         System.out.printf("%S%s%d%n\n", name, ", Вы угадали число!!! Это: ", number);
-    //         return true;
-    //     }
-    //     return false;
-    // }
 }
