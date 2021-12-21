@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class Player {
 
@@ -27,12 +27,7 @@ public class Player {
         return this.number;
     }
 
-    public void setNumber() {
-        Scanner sc = new Scanner(System.in);
-        do {
-            System.out.print(name + ", введите число в диапазоне [1, 100]: ");
-            number = sc.nextInt();
-        } while (number <=0 | number > 100);
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -43,22 +38,23 @@ public class Player {
     public void initialization() {
         this.minRange = 1;
         this.maxRange = 100;
+        this.number = 0;
     }
 
-    public boolean checkNumber(int number, int secretNumber) {
-        this.number = number;
-        if (number < secretNumber) {
-            System.out.println("Введенное число: " + number + " меньше загаданного.");
-            setMinRange(number);
-            System.out.println("_Подсказка для игрока " + name + " : " + corrections() + "\n");
-        } else if (number > secretNumber) {
-            System.out.println("Введенное число: " + number + " больше загаданного.");
-            setMaxRange(number);
-            System.out.println("_Подсказка для игрока " + name + " : " + corrections() + "\n");
-        } else if (number == secretNumber) {
-            System.out.printf("%S%s%d%n\n", name, ", Вы угадали число!!! Это: ", number);
-            return true;
-        }
-        return false;
-    }
+    // public boolean checkNumber(int number, int secretNumber) {
+    //     this.number = number;
+    //     if (number < secretNumber) {
+    //         System.out.println("Введенное число: " + number + " меньше загаданного.");
+    //         setMinRange(number);
+    //         System.out.println("_Подсказка для игрока " + name + " : " + corrections() + "\n");
+    //     } else if (number > secretNumber) {
+    //         System.out.println("Введенное число: " + number + " больше загаданного.");
+    //         setMaxRange(number);
+    //         System.out.println("_Подсказка для игрока " + name + " : " + corrections() + "\n");
+    //     } else if (number == secretNumber) {
+    //         System.out.printf("%S%s%d%n\n", name, ", Вы угадали число!!! Это: ", number);
+    //         return true;
+    //     }
+    //     return false;
+    // }
 }
