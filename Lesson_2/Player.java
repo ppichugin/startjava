@@ -1,10 +1,6 @@
-
-
 public class Player {
 
     private String name;
-    private int minRange = 1;
-    private int maxRange = 100;
     private int number;
 
     public Player(String name) {
@@ -12,33 +8,20 @@ public class Player {
     }
 
     public String getName() {
-        return this.name;
-    }
-
-    public void setMinRange(int minRange) {
-        this.minRange = minRange;
-    }
-
-    public void setMaxRange(int maxRange) {
-        this.maxRange = maxRange;
+        return name;
     }
 
     public int getNumber() {
-        return this.number;
+        return number;
     }
 
-    public void setNumber(int number) {
+    public boolean setNumber(int number) {
+        if (number < 1 | number > 100) {
+            System.out.println("Введеное число вне допустимого диапазона.");
+            return false;
+        }
         this.number = number;
-    }
-
-    public int corrections() {
-        return ((this.minRange + this.maxRange) / 2);
-    }
-
-    public void initialization() {
-        this.minRange = 1;
-        this.maxRange = 100;
-        this.number = 0;
+        return true;
     }
 
 }

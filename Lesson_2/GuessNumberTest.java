@@ -6,9 +6,9 @@ public class GuessNumberTest {
         Scanner scanInput = new Scanner(System.in);
         System.out.print("Введите имя первого игрока. PLAYER 1: ");
         String playerOneName = scanInput.nextLine();
+        Player playerOne = new Player(playerOneName);
         System.out.print("Введите имя второго игрока. PLAYER 2: ");
         String playerTwoName = scanInput.nextLine();
-        Player playerOne = new Player(playerOneName);
         Player playerTwo = new Player(playerTwoName);
         GuessNumber game = new GuessNumber(playerOne, playerTwo);
         String answer ="yes";
