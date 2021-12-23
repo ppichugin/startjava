@@ -18,10 +18,10 @@ public class GuessNumber {
         while (true) {
             System.out.println("-----");
             inputNumber(playerOne);
-            inputNumber(playerTwo);
             if (checkNumber(playerOne)) {
                 break;
             }
+            inputNumber(playerTwo);
             if (checkNumber(playerTwo)) {
                 break;
             }
