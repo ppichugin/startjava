@@ -17,12 +17,12 @@ public class GuessNumber {
         System.out.println("Компьютер загадал число. Начинаем игру !");
         while (true) {
             System.out.println("-----");
-            getNumberFromPlayer(playerOne);
-            getNumberFromPlayer(playerTwo);
-            if (checkNumber(playerOne, secretNumber)) {
+            inputNumber(playerOne);
+            inputNumber(playerTwo);
+            if (checkNumber(playerOne)) {
                 break;
             }
-            if (checkNumber(playerTwo, secretNumber)) {
+            if (checkNumber(playerTwo)) {
                 break;
             }
         }
@@ -33,7 +33,17 @@ public class GuessNumber {
         secretNumber = r.nextInt(100) + 1;
     }
 
-    private boolean checkNumber(Player player, int secretNumber) {
+    private void inputNumber(Player player) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.print(player.getName() + ", введите число [1, 100]: ");
+            if (player.setNumber(sc.nextInt())) {
+                break;
+            }
+        }
+    }
+
+    private boolean checkNumber(Player player) {
          if (player.getNumber() < secretNumber) {
             System.out.println(player.getName() + ", введенное число '" + player.getNumber() + "' меньше загаданного.");
         } else if (player.getNumber() > secretNumber) {
@@ -44,15 +54,4 @@ public class GuessNumber {
         }
         return false;
     }
-
-    private void getNumberFromPlayer(Player player) {
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.print(player.getName() + ", введите число [1, 100]: ");
-            if (player.setNumber(sc.nextInt())) {
-                break;
-            }
-        }
-    }
-
 }

@@ -16,12 +16,11 @@ public class Player {
     }
 
     public boolean setNumber(int number) {
-        if (number < 1 | number > 100) {
+        if (number < 1 || number > 100) {
             System.out.println("Введеное число вне допустимого диапазона.");
             return false;
         }
         this.number = number;
         return true;
     }
-
 }
