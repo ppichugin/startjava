@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.unicode;
+
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
