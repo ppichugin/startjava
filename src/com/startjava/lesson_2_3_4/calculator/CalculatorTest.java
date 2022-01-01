@@ -6,20 +6,24 @@ public class CalculatorTest {
 
     public static void main(String[] args) {
         Scanner scanInput = new Scanner(System.in);
-        Calculator calc = new Calculator();
         String answer = "yes";
         do {
             if ("yes".equals(answer)) {
-                System.out.println("Введите первое число: ");
-                calc.setNumber1(scanInput.nextInt());
-                System.out.println("Введите знак математической операции: ");
-                calc.setMathSign(scanInput.next().charAt(0));
-                System.out.println("Введите второе число: ");
-                calc.setNumber2(scanInput.nextInt());
-                scanInput.nextLine();
-                calc.calculate();
+                outer:
+                while (true) {
+                    System.out.print("Введите математическое выражение с целыми положительынми числами через пробел: ");
+                    String line = scanInput.nextLine();
+                    String[] lineCalculation = line.split(" ");
+                    Calculator.setMathSign(lineCalculation[1].charAt(0));
+                    if (!Calculator.setNumber1(Double.parseDouble(lineCalculation[0])) | !Calculator.setNumber2(Double.parseDouble(lineCalculation[2]))) {
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+                System.out.println("Результат: " + Calculator.calculate());
             }
-            System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             answer = scanInput.nextLine();
         } while (!"no".equals(answer));
         scanInput.close();
