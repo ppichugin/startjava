@@ -8,11 +8,10 @@ public class Calculator {
 
     public static boolean setNumber1(double number1) {
         if (number1 < 0) {
-            System.out.println("Введеное первое число отрицательное.");
+            System.out.print("Введенное первое число отрицательное! ");
             return false;
-        }
-        if (number1 != (int) number1 ) {
-            System.out.println("Введеное первое число не целое.");
+        } else if (number1 != (int) number1 ) {
+            System.out.print("Введенное первое число не целое! ");
             return false;
         }
         Calculator.number1 = (int) number1;
@@ -21,11 +20,10 @@ public class Calculator {
 
     public static boolean setNumber2(double number2) {
         if (number2 < 0) {
-            System.out.println("Введеное второе число число отрицательное.");
+            System.out.print("Введенное второе число число отрицательное! ");
             return false;
-        }
-        if (number2 != (int) number2) {
-            System.out.println("Введеное второе число не целое.");
+        } else if (number2 != (int) number2) {
+            System.out.print("Введенное второе число не целое! ");
             return false;
         }
         Calculator.number2 = (int) number2;
@@ -36,32 +34,23 @@ public class Calculator {
         Calculator.mathSign = mathSign;
     }
 
-    public static String calculate() {
-
-        String result =
-            switch (mathSign) {
-                case '+' -> {
-                    yield String.valueOf(number1 + number2);
-                }
-                case '-' -> {
-                    yield String.valueOf(number1 - number2);
-                }
-                case '*' -> {
-                    yield String.valueOf(number1 * number2);
-                }
-                case '/' -> {
-                    // используем тип double, чтобы сохранить знаки после запятой
-                    yield String.valueOf((double) number1 / (double) number2);
-                }
-                case '^' -> {
-                    // используем тип Long так как возведение в степень может иметь большие значения
-                   yield String.valueOf((long) Math.pow(number1, number2));
-                }
-                case '%' -> {
-                    yield String.valueOf(number1 % number2);
-                }
-                default -> "Математическая операция невозможна. Недопустимый оператор.";
-            };
-        return result;
+    public static double calculate(String mathOperation) {
+        String[] lineCalculation = mathOperation.split(" ");
+        Calculator.setMathSign(lineCalculation[1].charAt(0));
+        if (!Calculator.setNumber1(Double.parseDouble(lineCalculation[0])) | !Calculator.setNumber2(Double.parseDouble(lineCalculation[2]))) {
+            return -100;
+        }
+        return switch (mathSign) {
+            case '+' -> number1 + number2;
+            case '-' -> number1 - number2;
+            case '*' -> number1 * number2;
+            case '/' -> (double) number1 / (double) number2;
+            case '^' -> Math.pow(number1, number2);
+            case '%' -> number1 % number2;
+            default -> {
+                System.out.println("Введен недопустимый оператор математической операции!");
+                yield -100;
+            }
+        };
     }
 }
