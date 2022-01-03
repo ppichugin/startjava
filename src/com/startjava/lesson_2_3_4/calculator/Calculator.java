@@ -24,7 +24,7 @@ public class Calculator {
         return false;
     }
 
-    private static boolean checkNumbers (double number) {
+    private static boolean checkNumbers(double number) {
         if (number < 0) {
             System.out.print("Вы ввели отрицательное число! ");
             return false;
