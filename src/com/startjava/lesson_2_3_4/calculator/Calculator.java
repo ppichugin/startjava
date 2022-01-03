@@ -1,5 +1,7 @@
 package com.startjava.lesson_2_3_4.calculator;
 
+import static java.lang.Double.MIN_VALUE;
+
 public class Calculator {
 
     private static int number1;
@@ -7,26 +9,29 @@ public class Calculator {
     private static char mathSign;
 
     public static boolean setNumber1(double number1) {
-        if (number1 < 0) {
-            System.out.print("Введенное первое число отрицательное! ");
-            return false;
-        } else if (number1 != (int) number1 ) {
-            System.out.print("Введенное первое число не целое! ");
-            return false;
+        if (checkNumbers(number1)) {
+            Calculator.number1 = (int) number1;
+            return true;
         }
-        Calculator.number1 = (int) number1;
-        return true;
+        return false;
     }
 
     public static boolean setNumber2(double number2) {
-        if (number2 < 0) {
-            System.out.print("Введенное второе число число отрицательное! ");
+        if (checkNumbers(number2)) {
+            Calculator.number2 = (int) number2;
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean checkNumbers (double number) {
+        if (number < 0) {
+            System.out.print("Вы ввели отрицательное число! ");
             return false;
-        } else if (number2 != (int) number2) {
-            System.out.print("Введенное второе число не целое! ");
+        } else if (number != (int) number) {
+            System.out.print("Вы ввели не целое число! ");
             return false;
         }
-        Calculator.number2 = (int) number2;
         return true;
     }
 
@@ -35,10 +40,14 @@ public class Calculator {
     }
 
     public static double calculate(String mathOperation) {
-        String[] lineCalculation = mathOperation.split(" ");
-        Calculator.setMathSign(lineCalculation[1].charAt(0));
-        if (!Calculator.setNumber1(Double.parseDouble(lineCalculation[0])) | !Calculator.setNumber2(Double.parseDouble(lineCalculation[2]))) {
-            return -100;
+        String[] separatedExpression = mathOperation.split(" ");
+        Calculator.setMathSign(separatedExpression[1].charAt(0));
+        // устанавливаем числа и получаем логический результат проверки валидации
+        boolean firstNumber = Calculator.setNumber1(Double.parseDouble(separatedExpression[0]));
+        boolean secondNumber = Calculator.setNumber2(Double.parseDouble(separatedExpression[2]));
+        // если установка одного из чисел не выполнена, то возвращаем константу double MIN_VALUE
+        if (!firstNumber | !secondNumber) {
+            return MIN_VALUE;
         }
         return switch (mathSign) {
             case '+' -> number1 + number2;
@@ -48,8 +57,8 @@ public class Calculator {
             case '^' -> Math.pow(number1, number2);
             case '%' -> number1 % number2;
             default -> {
-                System.out.println("Введен недопустимый оператор математической операции!");
-                yield -100;
+                System.out.print("Введен недопустимый оператор математической операции! ");
+                yield MIN_VALUE;
             }
         };
     }
