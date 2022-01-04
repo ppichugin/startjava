@@ -27,26 +27,26 @@ public class Calculator {
     private static boolean checkNumbers(double number) {
         if (number < 0) {
             System.out.print("Вы ввели отрицательное число! ");
-            return false;
         } else if (number != (int) number) {
             System.out.print("Вы ввели не целое число! ");
-            return false;
+        } else {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static void setMathSign(char mathSign) {
         Calculator.mathSign = mathSign;
     }
 
-    public static double calculate(String mathOperation) {
-        String[] separatedExpression = mathOperation.split(" ");
+    public static double calculate(String mathExpression) {
+        String[] separatedExpression = mathExpression.split(" ");
         Calculator.setMathSign(separatedExpression[1].charAt(0));
         // устанавливаем числа и получаем логический результат проверки валидации
         boolean firstNumber = Calculator.setNumber1(Double.parseDouble(separatedExpression[0]));
         boolean secondNumber = Calculator.setNumber2(Double.parseDouble(separatedExpression[2]));
         // если установка одного из чисел не выполнена, то возвращаем константу double MIN_VALUE
-        if (!firstNumber | !secondNumber) {
+        if (!firstNumber || !secondNumber) {
             return MIN_VALUE;
         }
         return switch (mathSign) {
