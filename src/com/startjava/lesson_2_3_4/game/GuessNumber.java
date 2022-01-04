@@ -7,6 +7,7 @@ public class GuessNumber {
     private int secretNumber;
     private final Player[] players = new Player[3];
     private final String[] winners = new String[3];
+    private int[] sequence = new int[3];
 
     public GuessNumber(Player player1, Player player2, Player player3) {
         players[0] = player1;
@@ -16,14 +17,43 @@ public class GuessNumber {
 
     public void start() {
         System.out.println("У каждого игрока по 10 попыток.");
-        System.out.println("Победитель будет определен по результатам трех раундов! Начинаем игру!");
+        System.out.println("Победитель будет определен по результатам трех раундов! Начинаем!");
+
         for (int round = 0; round < 3; round++) {       // раунды
             generateSecretNumber();
             System.out.println("\nКомпьютер загадал число.");
             System.out.println("=== РАУНД: " + (round + 1));
+
+            // жребий (перенести в отдельный метод)
+            System.out.println("Бросаем жребий для определения хода");
+            Random r = new Random();
+            for (int i = 0; i < 3; i++) {
+                sequence[i] = r.nextInt(15) + 3;    // три костяшки: 18 баллов макс., 3 балла мин.
+                System.out.println("Игрок " + players[i].getName() + " получил " + sequence[i] + " очков");
+            }
+            int indexOfMax = 0;
+            int indexOfMin = 0;
+            for (int i = 1; i < 3; i++) {
+                if (sequence[i] > sequence[indexOfMax]) {
+                    indexOfMax = i;
+                } else if (sequence[i] < sequence[indexOfMin]) {
+                    indexOfMin = i;
+                }
+            }
+            int indexOfMid = (6 - ((indexOfMin + 1) + (indexOfMax + 1))) - 1;
+            System.out.println("Первым ходит: " + players[indexOfMax].getName());
+            System.out.println("Вторым ходит: " + players[indexOfMid].getName());
+            System.out.println("Третьим ходит: " + players[indexOfMin].getName());
+            sequence[0] = indexOfMax;
+            sequence[1] = indexOfMid;
+            sequence[2] = indexOfMin;
+            System.out.println("Индексы игроков по порядку: " + Arrays.toString(sequence));
+
+            // начало игры
             for (int i = 0; i < 10; i++) {              // попытки
                 System.out.println("---- Попытка № " + (i + 1));
-                for (Player player : players) {         // ходы участников
+                for (int j = 0; j < players.length; j++) {
+                    Player player = players[sequence[j]];         // ходы участников
                     inputNumber(player);
                     if (checkNumber(player)) {
                         winners[round] = player.getName();
@@ -42,7 +72,6 @@ public class GuessNumber {
             System.out.print(name + " ");
         }
         System.out.println("");
-        // код упростить
         int countPlayer1 = Collections.frequency(List.of(winners),players[0].getName());
         int countPlayer2 = Collections.frequency(List.of(winners),players[1].getName());
         int countPlayer3 = Collections.frequency(List.of(winners),players[2].getName());
