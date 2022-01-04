@@ -8,24 +8,12 @@ public class Player {
     private int[] numbers = new int[10];
     private int attempt;
 
-    public int getAttempt() {
-        return attempt;
-    }
-
-    public void setAttempt(int attempt) {
-        this.attempt = attempt;
-    }
-
     public Player(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public int getNumber() {
-        return numbers[attempt - 1];
     }
 
     public boolean setNumber(int number) {
@@ -37,13 +25,20 @@ public class Player {
         return true;
     }
 
-    public void getGuessedNumbers() {
-        System.out.print("Числа игрока " + getName() + ": ");
-        int[] guessedNumbers = Arrays.copyOf(numbers, attempt);
-        for (int number : guessedNumbers) {
-            System.out.print(number + " ");
-        }
-        System.out.println();
+    public int getNumber() {
+        return numbers[attempt - 1];
+    }
+
+    public int getAttempt() {
+        return attempt;
+    }
+
+    public void setAttempt(int attempt) {
+        this.attempt = attempt;
+    }
+
+    public int[] getGuessedNumbers() {
+        return Arrays.copyOf(numbers, attempt);
     }
 
     public void resetAllNumbers() {
