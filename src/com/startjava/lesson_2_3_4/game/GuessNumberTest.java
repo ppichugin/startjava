@@ -3,19 +3,14 @@ package com.startjava.lesson_2_3_4.game;
 import java.util.Scanner;
 
 public class GuessNumberTest {
-
     public static void main(String[] args) {
+        Player[] players = new Player[3];
         Scanner scanInput = new Scanner(System.in);
-        System.out.print("Введите имя первого игрока. PLAYER 1: ");
-        Player playerOne = new Player(scanInput.nextLine());
-
-        System.out.print("Введите имя второго игрока. PLAYER 2: ");
-        Player playerTwo = new Player(scanInput.nextLine());
-
-        System.out.print("Введите имя третьего игрока. PLAYER 3: ");
-        Player playerThree = new Player(scanInput.nextLine());
-
-        GuessNumber game = new GuessNumber(playerOne, playerTwo, playerThree);
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Введите имя игрока " + (i + 1) + ": ");
+            players[i] = new Player(scanInput.nextLine());
+        }
+        GuessNumber game = new GuessNumber(players);
         String answer ="yes";
         do {
             if ("yes".equals(answer)) {

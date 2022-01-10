@@ -7,6 +7,7 @@ public class Player {
     private String name;
     private int[] numbers = new int[10];
     private int attempt;
+    private int numOfWins;
 
     public Player(String name) {
         this.name = name;
@@ -35,6 +36,14 @@ public class Player {
 
     public void setAttempt(int attempt) {
         this.attempt = attempt;
+    }
+
+    public int getNumOfWins() {
+        return numOfWins;
+    }
+
+    public void setNumOfWins(int numOfWins) {
+        this.numOfWins = numOfWins;
     }
 
     public int[] getGuessedNumbers() {
