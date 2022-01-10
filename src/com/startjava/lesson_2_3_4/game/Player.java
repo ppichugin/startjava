@@ -42,7 +42,7 @@ public class Player {
         return numOfWins;
     }
 
-    public void setNumOfWins(int numOfWins) {
+    public void setWin(int numOfWins) {
         this.numOfWins = numOfWins;
     }
 
