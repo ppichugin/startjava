@@ -38,12 +38,20 @@ public class Player {
         this.attempt = attempt;
     }
 
+    public void increaseAttemptsForOne() {
+        attempt++;
+    }
+
     public int getNumOfWins() {
         return numOfWins;
     }
 
     public void setWin(int numOfWins) {
         this.numOfWins = numOfWins;
+    }
+
+    public void increaseWinsForOne() {
+        numOfWins++;
     }
 
     public int[] getGuessedNumbers() {
