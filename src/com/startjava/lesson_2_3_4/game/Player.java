@@ -17,12 +17,12 @@ public class Player {
         return name;
     }
 
-    public boolean setNumber(int number) {
-        if (number < 1 || number > 100) {
+    public boolean setNumber(int num) {
+        if (num < 1 || num > 100) {
             System.out.println("Введеное число вне допустимого диапазона.");
             return false;
         }
-        numbers[attempt] = number;
+        numbers[attempt] = num;
         return true;
     }
 
