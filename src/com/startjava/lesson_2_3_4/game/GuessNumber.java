@@ -77,6 +77,12 @@ public class GuessNumber {
         swapPlayers(players[indexOfMax], players[indexOfMid], players[indexOfMin]);
     }
 
+    private void swapPlayers(Player firstPlayer, Player secondPlayer, Player thirdPlayer) {
+        players[0] = firstPlayer;
+        players[1] = secondPlayer;
+        players[2] = thirdPlayer;
+    }
+
     private void startGameplay() {
         boolean isNumberGuessed = false;
         for (int i = 0; i < 10; i++) { // попытки
@@ -97,6 +103,29 @@ public class GuessNumber {
         if (!isNumberGuessed) {
             System.out.println("Никто не угадал число..");
         }
+    }
+
+    private void inputNumber(Player player) {
+        Scanner sc = new Scanner(System.in);
+        boolean isNumberValid;
+        do {
+            System.out.print(player.getName() + ", введите число [1, 100]: ");
+            isNumberValid = player.setNumber(sc.nextInt());
+        } while (!isNumberValid);
+        player.increaseAttemptsForOne();
+    }
+
+    private boolean compareNumbers(Player player) {
+        if (player.getNumber() < secretNumber) {
+            System.out.println(player.getName() + ", введенное число '" + player.getNumber() + "' меньше загаданного.");
+        } else if (player.getNumber() > secretNumber) {
+            System.out.println(player.getName() + ", введенное число '" + player.getNumber() + "' больше загаданного.");
+        } else if (player.getNumber() == secretNumber) {
+            System.out.printf("%S%s%d%n\n", player.getName(), ", Вы угадали число!!! Это: ", player.getNumber());
+            System.out.println("Игрок " + player.getName() + " угадал число " + player.getNumber() + " с " + player.getAttempt() + " попытки");
+            return true;
+        }
+        return false;
     }
 
     private void printPlayerNumbers() {
@@ -152,34 +181,5 @@ public class GuessNumber {
         } else {
             System.out.println("Победил: " + players[winnerIndex].getName());
         }
-    }
-
-    private void inputNumber(Player player) {
-        Scanner sc = new Scanner(System.in);
-        boolean isNumberValid;
-        do {
-            System.out.print(player.getName() + ", введите число [1, 100]: ");
-            isNumberValid = player.setNumber(sc.nextInt());
-        } while (!isNumberValid);
-        player.increaseAttemptsForOne();
-    }
-
-    private boolean compareNumbers(Player player) {
-        if (player.getNumber() < secretNumber) {
-            System.out.println(player.getName() + ", введенное число '" + player.getNumber() + "' меньше загаданного.");
-        } else if (player.getNumber() > secretNumber) {
-            System.out.println(player.getName() + ", введенное число '" + player.getNumber() + "' больше загаданного.");
-        } else if (player.getNumber() == secretNumber) {
-            System.out.printf("%S%s%d%n\n", player.getName(), ", Вы угадали число!!! Это: ", player.getNumber());
-            System.out.println("Игрок " + player.getName() + " угадал число " + player.getNumber() + " с " + player.getAttempt() + " попытки");
-            return true;
-        }
-        return false;
-    }
-
-    private void swapPlayers(Player firstPlayer, Player secondPlayer, Player thirdPlayer) {
-        players[0] = firstPlayer;
-        players[1] = secondPlayer;
-        players[2] = thirdPlayer;
     }
 }
